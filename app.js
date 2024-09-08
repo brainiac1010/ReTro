@@ -1,4 +1,4 @@
-const loadData = async (searchtext) => {
+const loadData = async (searchtext ='comedy') => {
     loadingSpinerhandel(true);
     const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchtext}`;
 
@@ -124,4 +124,4 @@ const displayLatestPost = (datas) => {
     });
 }
 
-latestPost('coding');
+latestPost();
