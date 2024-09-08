@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReTro</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#1c1832] text-black">
+
+<div class="container mx-auto p-4">
+
+    <nav class="m-5 p-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-4xl md:text-5xl font-bold text-purple-300 mb-4 md:mb-0">ReTro</div>
+        <div class="flex flex-wrap items-center gap-4">
+            <div class="flex items-center gap-4">
+                <p class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full"><i class="fa-solid fa-house"></i></p>
+                <p class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full"><i class="fa-solid fa-pen"></i></p>
+                <p class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full"><i class="fa-solid fa-user-plus"></i></p>
+                <p class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full"><i class="fa-solid fa-flag"></i></p>
+            </div>
+            <a class="btn bg-blue-500 border-none rounded-full font-bold text-white mt-4 md:mt-0">Sign In</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <section class="flex flex-col md:flex-row justify-center items-center">
+        <div class="relative mx-auto w-full p-6 md:p-8 rounded-lg shadow-lg bg-cover bg-center grid grid-cols-1 md:grid-cols-2" style="background-image: url('./asset/images/bgbanner.png');">
+            <!-- Content Wrapper -->
+            <div class="relative text-center w-full md:w-3/4 text-white space-y-4">
+                <div class="mx-auto max-w-full md:max-w-lg">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold">Welcome to the <span class="text-purple-300">ReTro</span> Forum</h1>
+                    <p class="text-sm md:text-base lg:text-lg">Share your favorite opinion and win a forum coffee mug!</p>
+                </div>
+                <!-- Search -->
+                <div class="mx-auto max-w-full md:max-w-lg flex flex-col md:flex-row justify-center items-center gap-2">
+                    <input type="text" id="search-field" placeholder="Search here anything" class="p-2 rounded-lg w-full md:w-64">
+                    <button onclick="handelSearch()" class="btn bg-blue-500 border-none text-white font-bold rounded-full mt-2 md:mt-0 px-4 py-2">Search</button>
+                </div>
+            </div>
+    
+            <!-- Stats Section -->
+            <div class="absolute top-1/2 right-4 md:right-8 transform -translate-y-1/2 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg bg-white p-4 md:p-6 rounded-lg shadow-lg">
+                <div class="flex flex-col space-y-4">
+                    <p class="flex justify-between text-sm sm:text-base md:text-lg gap-4">
+                        <span>Registered Users</span>
+                        <span>01</span>
+                    </p>
+                    <p class="flex justify-between text-sm sm:text-base md:text-lg gap-4">
+                        <span>Forum</span>
+                        <span>05</span>
+                    </p>
+                    <p class="flex justify-between text-sm sm:text-base md:text-lg gap-4">
+                        <span>Topics</span>
+                        <span>01</span>
+                    </p>
+                    <p class="flex justify-between text-sm sm:text-base md:text-lg gap-4">
+                        <span>Replies</span>
+                        <span>01</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    </main>
+
+    <!-- Hero Section -->
+    <section class="mt-6 md:mt-9 p-4 md:p-5">
+        <!-- Header -->
+        <div class="text-center text-purple-300">
+            <h2 class="text-3xl md:text-5xl font-bold">Lets Discuss</h2>
+            <p class="p-4 md:p-5">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined experience.</p>
+
+            <!-- Loading Spinner -->
+            <div id="loading-spiner" class="p-4 md:p-6 hidden">
+                <span class="loading loading-bars loading-lg"></span>
+            </div>
+        </div>
+
+        <!-- Main API Area -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div id="container-card" class="w-full"></div>
+
+            <!-- Title Box -->
+            <div class="w-full md:w-3/4 bg-[#f3f3f5] rounded p-4 md:px-12 pb-10 pt-2">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold">Title</h2>
+                    <div class="border-t border-dashed border-gray-300 my-2"></div>
+                    <div id="title"></div> 
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section class="flex flex-col md:flex-row items-center justify-between bg-[#1c1832] p-6 md:p-10 rounded-xl text-white">
+        <div class="w-full md:w-1/2 mb-6 md:mb-0">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Join Our Forum</h2>
+            <p class="mb-4 md:mb-6">Share your favorite opinion and win a forum coffee mug! Yes, you can run unit tests and view the results directly within the app.</p>
+            <button class="bg-[#8367d8] text-white py-2 px-4 md:py-2 md:px-6 rounded-full hover:bg-purple-700 transition-all">Register Now</button>
+        </div>
+        
+        <div class="w-full md:w-1/2 flex justify-center">
+            <img src="./asset/images/joinforum.png" alt="Join Forum Illustration" class="w-full max-w-xs md:max-w-full">
+        </div>
+    </section>
+
+    <section class="text-center mt-6 md:mt-5 p-4 md:p-5 text-purple-300">
+        <h2 class="text-3xl md:text-5xl font-bold">Latest Posts</h2>
+        <p class="p-4 md:p-5">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined experience.</p>
+    </section>
+
+    <section class="p-6 md:p-10 bg-transparent rounded-md">
+        <div id="Latest-Posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Posts will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center bg-[#1c1832] text-base-content rounded p-6 md:p-10 text-purple-300">
+        <h2 class="text-center text-3xl md:text-5xl font-bold">ReTro</h2>
+        <p class="text-center text-sm md:text-base">Your go-to platform for the latest in technology, design, and innovation.</p>
+        <nav>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <!-- GitHub Icon -->
+                <a href="https://github.com" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.302 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.776.418-1.304.76-1.604-2.665-.305-5.467-1.333-5.467-5.929 0-1.31.467-2.38 1.236-3.22-.124-.305-.536-1.528.118-3.184 0 0 1.008-.32 3.3 1.238.958-.266 1.99-.399 3.006-.404 1.014.005 2.048.138 3.01.4 2.28-1.563 3.286-1.235 3.286-1.235.657 1.662.246 2.879.122 3.184.767.841 1.232 1.89 1.232 3.22 0 4.604-2.81 5.621-5.48 5.921.432.373.82 1.11.82 2.237 0 1.611-.014 2.915-.014 3.31 0 .321.22.692.825.577 4.766-1.585 8.204-6.083 8.204-11.385 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <!-- Twitter Icon -->
+                <a href="https://twitter.com" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M22.46 6c-.77.34-1.61.57-2.48.68a4.35 4.35 0 0 0 1.9-2.39c-.81.48-1.7.84-2.65 1.03a4.29 4.29 0 0 0-7.41 3.91c-3.57-.18-6.74-1.9-8.85-4.52a4.33 4.33 0 0 0-.58 2.17c0 1.5.76 2.83 1.91 3.61a4.31 4.31 0 0 1-1.94-.54v.05c0 2.09 1.49 3.83 3.46 4.23a4.37 4.37 0 0 1-1.92.07c.54 1.7 2.1 2.93 3.95 2.97a8.6 8.6 0 0 1-5.33 1.84c-.35 0-.7-.02-1.05-.06a12.12 12.12 0 0 0 6.57 1.93c7.88 0 12.2-6.52 12.2-12.2 0-.19-.01-.38-.02-.56a8.62 8.62 0 0 0 2.13-2.2z"/></svg>
+                </a>
+                <!-- Facebook Icon -->
+                <a href="https://facebook.com" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M12 2.04c-5.51 0-9.94 4.43-9.94 9.94 0 5.08 3.92 9.34 8.98 9.94v-7h-2.71v-2.63h2.71v-1.95c0-2.68 1.63-4.12 4.02-4.12 1.14 0 2.12.09 2.41.13v2.81h-1.66c-1.31 0-1.56.63-1.56 1.56v1.93h3.12l-.4 2.63h-2.72v7c5.03-.59 8.95-4.85 8.95-9.93 0-5.51-4.43-9.94-9.94-9.94z"/></svg>
+                </a>
+                <!-- Instagram Icon -->
+                <a href="https://instagram.com" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M12 2.5c-5.21 0-9.5 4.29-9.5 9.5s4.29 9.5 9.5 9.5 9.5-4.29 9.5-9.5-4.29-9.5-9.5-9.5zm0 17.25c-4.27 0-7.75-3.48-7.75-7.75s3.48-7.75 7.75-7.75 7.75 3.48 7.75 7.75-3.48 7.75-7.75 7.75zm4.75-9.5c0 1.42-1.17 2.58-2.58 2.58-1.42 0-2.58-1.17-2.58-2.58 0-1.42 1.17-2.58 2.58-2.58 1.42 0 2.58 1.17 2.58 2.58zm-5.42-1.67c-.68 0-1.25.57-1.25 1.25s.57 1.25 1.25 1.25 1.25-.57 1.25-1.25-.57-1.25-1.25-1.25z"/></svg>
+                </a>
+            </div>
+        </nav>
+        <p class="mt-4">© 2024 ReTro. All rights reserved.</p>
+    </footer>
+
+</div>
+
+<script src="https://kit.fontawesome.com/cb15de5312.js" crossorigin="anonymous"></script>
+<script src="./app.js"></script>
+</body>
+</html>
